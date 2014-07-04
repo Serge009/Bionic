@@ -32,8 +32,9 @@ public class DepoList {
 	
 	public void remove(){
 		Iterator<DepoBase> iter = list.iterator();
+		DepoBase d;
 		while(iter.hasNext()){
-			DepoBase d = iter.next();
+			d = iter.next();
 			if(d.getSum() < 10_000){
 				iter.remove();
 			}
