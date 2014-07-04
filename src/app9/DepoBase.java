@@ -1,6 +1,7 @@
 package app9;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public abstract class DepoBase implements Comparable<DepoBase> {
 	
@@ -15,6 +16,19 @@ public abstract class DepoBase implements Comparable<DepoBase> {
 	protected LocalDate startDate;
 	
 	protected LocalDate maturityDate;
+	
+	static class SortBySum implements Comparator<DepoBase>{
+
+		@Override
+		public int compare(DepoBase o1, DepoBase o2) {
+			double int1 = o1.getSum();
+			double int2 = o2.getSum();
+			if(int1 == int2) return 0;
+			if(int1 > int2) return 1;
+			return -1;
+		}
+		
+	}
 
 	public DepoBase(double sum, int days, double interestRate, LocalDate startDate) {
 		this.sum = sum;

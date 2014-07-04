@@ -43,9 +43,9 @@ public class DepoList {
 	}
 	
 	public void sort(){
-		Collections.sort(list);
+		Collections.sort(list, new DepoBase.SortBySum());
 		for(DepoBase d : list){
-			System.out.println(d.getInterest());
+			System.out.println(d.getSum());
 		}
 	}
 	
