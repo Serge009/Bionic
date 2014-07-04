@@ -2,7 +2,7 @@ package app9;
 
 import java.time.LocalDate;
 
-public abstract class DepoBase {
+public abstract class DepoBase implements Comparable<DepoBase> {
 	
 	protected double interest;
 	
@@ -23,6 +23,16 @@ public abstract class DepoBase {
 		this.startDate = startDate;
 	}
 	
+	@Override
+	public int compareTo(DepoBase d){
+		double int1 = this.calculateInterest();
+		double int2 = d.calculateInterest();
+		if(int1 == int2) return 0;
+		if(int1 > int2) return 1;
+		return -1;
+	}
+	
+	public abstract double calculateInterest();
 	
 	public LocalDate getStartDate() {
 		return startDate;

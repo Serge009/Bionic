@@ -10,10 +10,10 @@ public class Dictionary {
 	}
 	
 	private void init(){
-		map.put("Save", "Запомнить");
-		map.put("Remove", "Удалить");
-		map.put("Cancel", "Прервать");
-		map.put("Create", "Создать");
+		map.put("Save", "");
+		map.put("Remove", "");
+		map.put("Cancel", "");
+		map.put("Create", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 		map.put("Ok", null);
 	}
 	

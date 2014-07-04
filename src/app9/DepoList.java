@@ -2,6 +2,7 @@ package app9;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 
@@ -40,5 +41,15 @@ public class DepoList {
 			}
 		}
 	}
+	
+	public void sort(){
+		Collections.sort(list);
+		for(DepoBase d : list){
+			System.out.println(d.getInterest());
+		}
+	}
+	
+	
+	
 
 }
