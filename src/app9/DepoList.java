@@ -2,6 +2,7 @@ package app9;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class DepoList {
@@ -27,6 +28,16 @@ public class DepoList {
 		}
 		
 		return res;
+	}
+	
+	public void remove(){
+		Iterator<DepoBase> iter = list.iterator();
+		while(iter.hasNext()){
+			DepoBase d = iter.next();
+			if(d.getSum() < 10_000){
+				iter.remove();
+			}
+		}
 	}
 
 }
