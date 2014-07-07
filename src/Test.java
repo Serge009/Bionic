@@ -1,18 +1,12 @@
-import app11.PrintList;
-import app9.DepoList;
+import app10.Dictionary;
 
 
 
 public class Test {
 
 	public static void main(String... args) {
-        PrintList<Integer> list = new PrintList<>();
-
-        for(int i = 0; i < 10; i++){
-            list.add(i);
-        }
-
-        list.printList(false);
-        list.printList(true);
+        Dictionary dictionary = new Dictionary();
+        dictionary.read("C:\\in.txt");
+        System.out.println(dictionary.getTranslate("Close Something"));
 	}
 }
