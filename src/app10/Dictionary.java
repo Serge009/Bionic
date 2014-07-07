@@ -15,6 +15,7 @@ public class Dictionary {
 		map.put("Cancel", "Отмена");
 		map.put("Create", "Создать");
 		map.put("Ok", null);
+
 	}
 	
 	public String getTranslate(String s){

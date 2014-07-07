@@ -43,10 +43,26 @@ public class DepoList {
 	}
 	
 	public void sort(){
-		Collections.sort(list, new DepoBase.SortBySum());
+        //list.sort((depo1, depo2) -> (int)(depo1.getSum() * 100 - depo2.getSum() * 100));
+        //list.forEach(d -> System.out.format("sum = %1$8.2f interest = %2$7.2f\n", d.getSum(), d.getInterest()));
+
+        //double sum = list.stream().mapToDouble(DepoBase::getSum).reduce(0, (a, b) -> a + b);
+        //System.out.println("Sum = " + sum);
+
+        //ArrayList<DepoBase> largeSum = (ArrayList<DepoBase>) list.stream().filter(d -> d.getSum() > 1000).collect()
+
+        /*
+        list.stream().filter(d -> d.getSum() > 6000 && d.getSum() < 15000)
+                .forEach( d -> System.out.format("sum = %1$8.2f interest = %2$7.2f\n", d.getSum(), d.getInterest()));
+
+
+        */
+
+		Collections.sort(list);
 		for(DepoBase d : list){
 			System.out.println(d.getSum());
 		}
+
 	}
 	
 	
