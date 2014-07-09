@@ -1,5 +1,8 @@
 package app9;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +10,9 @@ import java.util.Iterator;
 
 
 public class DepoList {
-	private ArrayList<DepoBase> list = new ArrayList<>();
+
+
+    private ArrayList<DepoBase> list = new ArrayList<>();
 	
 	public DepoList() {
 		init();
@@ -19,7 +24,8 @@ public class DepoList {
 		list.add(new Deposit(5500, 30, 15.3, LocalDate.of(2013, 11, 12)));
 		list.add(new BarrierDepo(43_000, 370, 19.56, LocalDate.of(2011, 12, 18)));
 		list.add(new SimpleDepo(12_000, 91, 16, LocalDate.of(2013, 7, 12)));
-	}
+
+    }
 	
 	public double getPrincipal(){
 		double res = 0;
@@ -64,6 +70,11 @@ public class DepoList {
 		}
 
 	}
+
+
+    public ArrayList<DepoBase> getList() {
+        return list;
+    }
 	
 	
 	

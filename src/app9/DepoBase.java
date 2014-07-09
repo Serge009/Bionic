@@ -2,10 +2,11 @@ package app9;
 
 import app12.Profitable;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Comparator;
 
-public abstract class DepoBase implements Comparable<DepoBase>, Profitable{
+public abstract class DepoBase implements Comparable<DepoBase>, Profitable, Serializable{
 	
 	protected double interest;
 	
