@@ -3,6 +3,8 @@ import app12.TBill;
 import app9.*;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,22 @@ import java.util.List;
  * Created by SERGE on 30.06.2014.
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        URL stat = new URL("http://www.ukrstat.gov.ua/express/expr2012/09_12/234.zip");
+
+        try (InputStream in = stat.openStream();
+             FileOutputStream out = new FileOutputStream("C:/234.zip")){
+
+            while (in.available() > 0) {
+                //byte[] data = new byte[in.available()];
+                int data = in.read();
+                out.write(data);
+            }
+        }
+
+
+
+        /*
         List<DepoBase> list = new DepoList().getList();
         int count = list.size();
         List<DepoBase> res = new ArrayList<>();
@@ -37,6 +54,8 @@ public class Main {
         for(DepoBase d : res){
             System.out.println(d.getInterest());
         }
+
+        */
 
     }
 }
