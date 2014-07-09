@@ -17,7 +17,7 @@ public class Main {
         URL stat = new URL("http://www.ukrstat.gov.ua/express/expr2012/09_12/234.zip");
 
         try (InputStream in = stat.openStream();
-             FileOutputStream out = new FileOutputStream("C:/234.zip")){
+             OutputStream out = new FileOutputStream("C:/234.zip")){
 
             while (in.available() > 0) {
                 //byte[] data = new byte[in.available()];
