@@ -40,7 +40,7 @@ public class Deposit extends DepoBase implements InterestSum  {
 		
 		return this.getInterest();
 	}
-	
-	
-	
+
+
+
 }

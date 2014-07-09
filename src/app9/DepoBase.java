@@ -1,9 +1,11 @@
 package app9;
 
+import app12.Profitable;
+
 import java.time.LocalDate;
 import java.util.Comparator;
 
-public abstract class DepoBase implements Comparable<DepoBase> {
+public abstract class DepoBase implements Comparable<DepoBase>, Profitable{
 	
 	protected double interest;
 	
@@ -45,6 +47,11 @@ public abstract class DepoBase implements Comparable<DepoBase> {
 		if(int1 > int2) return 1;
 		return -1;
 	}
+
+    @Override
+    public double getProfit() {
+        return this.getInterest();
+    }
 	
 	public abstract double calculateInterest();
 	
@@ -57,6 +64,8 @@ public abstract class DepoBase implements Comparable<DepoBase> {
 	}
 
 	public double getInterest() {
+        if(interest == 0)
+            calculateInterest();
 		return interest;
 	}
 

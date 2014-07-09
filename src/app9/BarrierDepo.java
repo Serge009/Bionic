@@ -53,6 +53,7 @@ public class BarrierDepo extends DepoBase implements InterestSum  {
 		
 		return this.getInterest();
 	}
-	
-		
+
+
+
 }
