@@ -20,7 +20,6 @@ public class Main {
              OutputStream out = new FileOutputStream("C:/234.zip")){
 
             while (in.available() > 0) {
-                //byte[] data = new byte[in.available()];
                 int data = in.read();
                 out.write(data);
             }
