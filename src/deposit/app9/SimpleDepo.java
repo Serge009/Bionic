@@ -1,10 +1,10 @@
-package app8;
+package deposit.app9;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 //import java.time.temporal.ChronoUnit;
 
-public class SimpleDepo extends DepoBase {
+public class SimpleDepo extends DepoBase implements InterestSum  {
 
 	public SimpleDepo(double sum, int days, double interestRate,
 			LocalDate startDate) {
@@ -12,9 +12,11 @@ public class SimpleDepo extends DepoBase {
 	}
 
 	@Override
-	public void calculateInterest() {
+	public double calculateInterest() {
 		this.maturityDate = startDate.plusDays(days); 
 		this.getFullMonths();
+		return this.getInterest();
+				
 	}
 	
 	private void getFullMonths(){

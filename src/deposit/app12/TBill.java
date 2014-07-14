@@ -1,4 +1,4 @@
-package app12;
+package deposit.app12;
 
 /**
  * Created by Matrix on 09.07.2014.

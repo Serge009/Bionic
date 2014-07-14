@@ -1,7 +1,6 @@
-package app10;
+package deposit.app10;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Dictionary {

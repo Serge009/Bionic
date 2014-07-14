@@ -1,6 +1,6 @@
-package app9;
+package deposit.app9;
 
-import app12.Profitable;
+import deposit.app12.Profitable;
 
 import java.io.Serializable;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package app5;
+package deposit.app5;
 
 /*
 Give performance coefficients from Exercise 3.1.4 for n = 10, n = 100, n = 1000, n = 10000, and n = 100000

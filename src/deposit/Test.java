@@ -1,4 +1,6 @@
-import app10.Dictionary;
+package deposit;
+
+import deposit.app10.Dictionary;
 
 
 

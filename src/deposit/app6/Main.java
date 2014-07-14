@@ -1,4 +1,4 @@
-package app6;
+package deposit.app6;
 
 /*
 How old are you in days and months? What day of week is your birthday?

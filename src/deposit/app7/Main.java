@@ -1,4 +1,4 @@
-package app7;
+package deposit.app7;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
