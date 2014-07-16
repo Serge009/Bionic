@@ -2,6 +2,9 @@ package jdbc;
 
 import java.io.*;
 import java.sql.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Properties;
 
 /**
@@ -11,29 +14,23 @@ public class JDBCBasics {
     public static void main(String[] args) {
         try{
             /*
-            Connection con = getConnection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(
-                    "SELECT name, charge FROM merchant");
-            while (rs.next()){
-                String nm = rs.getString("name");
-                double p = rs.getDouble(2);
-                System.out.println(nm + "   " + p);
-            }
-            con.close();
+            String name = "Mike";
+            String address = "Some Address";
+            String email = "email@hh.com";
+            String ccNo = "58119881458";
+            String ccType = "979879878";
+            LocalDate date = LocalDate.of(2012, 2, 1);
+
+            Instant instant = date.atStartOfDay(ZoneId.systemDefault()).toInstant();
+            Date dt = new java.sql.Date(java.util.Date.from(instant).getTime());
+            addCustomer(name, address, email, ccNo, ccType, dt);
             */
-            Connection con = getConnection();
-            String sql = "INSERT INTO customer (name, address, ";
-            sql += " email, ccNo, ccType, maturity) values(";
-            sql += " 'Clar Nelis', 'Vosselaar st. 19, Trnaut, Belgium', ";
-            sql += " 'Clar@adw.com', 	'11345694671231', ";
-            sql += " 'MasterCard', '2014-07-31') ";
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate(sql);
-            con.close();
+
+            int id = 1;
+            System.out.println(getMerchantTotal(id));
 
         } catch (SQLException e){
-
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,5 +47,40 @@ public class JDBCBasics {
         conn = DriverManager.getConnection(connString);
         return conn;
     }
+
+    public static void addCustomer(String name, String address, String email, String ccNo, String ccType, Date dt) throws SQLException, IOException{
+        Connection con = getConnection();
+        String sql = "INSERT INTO customer (name, address, ";
+        sql += " email, ccNo, ccType, maturity) values(?,?,?,?,?,?) ";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, name);
+        stmt.setString(2, address);
+        stmt.setString(3, email);
+        stmt.setString(4, ccNo);
+        stmt.setString(5, ccType);
+        stmt.setDate(6, dt);
+        stmt.executeUpdate();
+        con.close();
+    }
+
+    public static double getMerchantTotal(int id) throws IOException, SQLException {
+        Connection con = getConnection();
+
+        String sql = "SELECT total FROM MERCHANT WHERE id = ?";
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setInt(1, id);
+
+        ResultSet rs = statement.executeQuery();
+        double res = 0;
+
+        while (rs.next()){
+            res = rs.getDouble("total");
+        }
+
+        con.close();
+
+        return res;
+    }
+
 
 }
