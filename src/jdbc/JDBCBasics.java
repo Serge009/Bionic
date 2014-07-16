@@ -10,7 +10,7 @@ import java.util.Properties;
 public class JDBCBasics {
     public static void main(String[] args) {
         try{
-
+            /*
             Connection con = getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(
@@ -20,6 +20,16 @@ public class JDBCBasics {
                 double p = rs.getDouble(2);
                 System.out.println(nm + "   " + p);
             }
+            con.close();
+            */
+            Connection con = getConnection();
+            String sql = "INSERT INTO customer (name, address, ";
+            sql += " email, ccNo, ccType, maturity) values(";
+            sql += " 'Clar Nelis', 'Vosselaar st. 19, Trnaut, Belgium', ";
+            sql += " 'Clar@adw.com', 	'11345694671231', ";
+            sql += " 'MasterCard', '2014-07-31') ";
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
             con.close();
 
         } catch (SQLException e){
