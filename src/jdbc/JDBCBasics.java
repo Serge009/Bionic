@@ -12,28 +12,7 @@ import java.util.Properties;
  */
 public class JDBCBasics {
     public static void main(String[] args) {
-        try{
-            /*
-            String name = "Mike";
-            String address = "Some Address";
-            String email = "email@hh.com";
-            String ccNo = "58119881458";
-            String ccType = "979879878";
-            LocalDate date = LocalDate.of(2012, 2, 1);
-
-            Instant instant = date.atStartOfDay(ZoneId.systemDefault()).toInstant();
-            Date dt = new java.sql.Date(java.util.Date.from(instant).getTime());
-            addCustomer(name, address, email, ccNo, ccType, dt);
-            */
-
-            int id = 1;
-            System.out.println(getMerchantTotal(id));
-
-        } catch (SQLException e){
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(MerchantDAO.getMerchants().toString());
     }
 
     public static Connection getConnection() throws IOException, SQLException{
