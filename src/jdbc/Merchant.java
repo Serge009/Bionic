@@ -98,6 +98,6 @@ public class Merchant {
                 ", swift='" + swift + '\'' +
                 ", account='" + account + '\'' +
                 ", total=" + total +
-                '}';
+                '}' + "\n";
     }
 }
