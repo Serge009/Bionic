@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.entity;
 
 /**
  * Created by Matrix on 17.07.2014.
@@ -11,6 +11,19 @@ public class Payment {
     private String goods;
     private double total;
     private double charge;
+
+    public Payment() {
+    }
+
+    public Payment(int id, long dt, Merchant merchant, Customer customer, String goods, double total, double charge) {
+        this.id = id;
+        this.dt = dt;
+        this.merchant = merchant;
+        this.customer = customer;
+        this.goods = goods;
+        this.total = total;
+        this.charge = charge;
+    }
 
     public int getId() {
         return id;

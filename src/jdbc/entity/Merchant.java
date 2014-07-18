@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.entity;
 
 /**
  * Created by oper4 on 16.07.2014.
@@ -13,6 +13,21 @@ public class Merchant {
     private String swift;
     private String account;
     private double total;
+
+    public Merchant() {
+    }
+
+    public Merchant(int id, String name, double charge, int period, double minSum, String bankName, String swift, String account, double total) {
+        this.id = id;
+        this.name = name;
+        this.charge = charge;
+        this.period = period;
+        this.minSum = minSum;
+        this.bankName = bankName;
+        this.swift = swift;
+        this.account = account;
+        this.total = total;
+    }
 
     public int getId() {
         return id;

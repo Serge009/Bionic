@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.entity;
 
 import java.time.LocalDate;
 
@@ -13,6 +13,19 @@ public class Customer {
     private String ccno;
     private String cctype;
     private LocalDate maturity;
+
+    public Customer() {
+    }
+
+    public Customer(int id, String name, String address, String email, String ccno, String cctype, LocalDate maturity) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.ccno = ccno;
+        this.cctype = cctype;
+        this.maturity = maturity;
+    }
 
     public int getId() {
         return id;

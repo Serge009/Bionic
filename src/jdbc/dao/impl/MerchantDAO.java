@@ -1,4 +1,8 @@
-package jdbc;
+package jdbc.dao.impl;
+
+import jdbc.dao.AbstractMerchantDAO;
+import jdbc.entity.Merchant;
+import jdbc.lib.MerchantList;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,8 +13,8 @@ import java.util.Properties;
 /**
  * Created by oper4 on 16.07.2014.
  */
-public class MerchantDAO {
-    public static MerchantList getMerchants(){
+public class MerchantDAO extends AbstractMerchantDAO {
+    public MerchantList getAll(){
         MerchantList res = new MerchantList();
 
         try {
@@ -48,15 +52,5 @@ public class MerchantDAO {
 
     }
 
-    public static Connection getConnection() throws IOException, SQLException {
-        Connection conn = null;
-        Properties props = new Properties();
-        InputStreamReader in = new InputStreamReader(new FileInputStream("connection.properties"), "UTF-8");
-        props.load(in);
-        in.close();
 
-        String connString = props.getProperty("DBConnectionString");
-        conn = DriverManager.getConnection(connString);
-        return conn;
-    }
 }

@@ -1,10 +1,9 @@
 package jdbc;
 
+import jdbc.dao.impl.MerchantDAO;
+
 import java.io.*;
 import java.sql.*;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Properties;
 
 /**
@@ -12,9 +11,11 @@ import java.util.Properties;
  */
 public class JDBCBasics {
     public static void main(String[] args) {
-        System.out.println(MerchantDAO.getMerchants().toString());
+        System.out.println(new MerchantDAO().getAll());
     }
 
+
+    /*
     public static Connection getConnection() throws IOException, SQLException{
         Connection conn = null;
         Properties props = new Properties();
@@ -61,5 +62,5 @@ public class JDBCBasics {
         return res;
     }
 
-
+    */
 }
