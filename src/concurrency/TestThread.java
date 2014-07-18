@@ -5,18 +5,19 @@ package concurrency;
  */
 public class TestThread extends Thread {
 
+    private Thread thread;
+
     @Override
     public void run() {
         try {
-            Thread thread = new Thread(new TestRunnable());
-            thread.start();
 
             for (int i = 0; i < 30; i++) {
                 System.out.println("TestThread = " + i);
                 Thread.currentThread().sleep(500);
             }
 
-            thread.join();
+            if(thread != null)
+                thread.join();
 
             System.out.println("TestThread is over!");
 
@@ -25,4 +26,8 @@ public class TestThread extends Thread {
         }
     }
 
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
 }
