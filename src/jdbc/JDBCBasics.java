@@ -14,9 +14,9 @@ import java.util.Properties;
  * Created by oper4 on 16.07.2014.
  */
 public class JDBCBasics {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
         //System.out.println(new MerchantDAO().getAll());
-
+    /*
         Payment payment = new Payment();
         Merchant merchant = new Merchant();
         Customer customer = new Customer();
@@ -32,10 +32,32 @@ public class JDBCBasics {
         payment.setCharge(20);
 
         new PaymentDAO().create(payment);
+        */
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = conn =
+                DriverManager.getConnection("jdbc:mysql://localhost/cm?" +
+                        "user=root&password=admin");
+
+        String sql = "SELECT c.name AS merchant, SUM(p.charge) AS income " +
+                "FROM cm.payment AS p " +
+                "INNER JOIN cm.merchant AS c " +
+                "ON p.customerId = c.id " +
+                "GROUP BY p.customerId " +
+                "ORDER BY income";
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+
+
+        while (rs.next()){
+            System.out.println(rs.getString("merchant") + " " + rs.getDouble("income"));
+        }
+
+        conn.close();
     }
 
 
-    /*
     public static Connection getConnection() throws IOException, SQLException{
         Connection conn = null;
         Properties props = new Properties();
@@ -82,5 +104,5 @@ public class JDBCBasics {
         return res;
     }
 
-    */
+
 }
