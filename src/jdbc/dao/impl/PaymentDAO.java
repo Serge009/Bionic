@@ -5,16 +5,13 @@ import jdbc.entity.Merchant;
 import jdbc.entity.Payment;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by Matrix on 18.07.2014.
  */
 public class PaymentDAO extends AbstractPaymentDAO {
-    @Override
+
     public void save(Payment payment) {
         try {
             Connection con = getConnection();
@@ -45,6 +42,37 @@ public class PaymentDAO extends AbstractPaymentDAO {
 
         } catch (SQLException e){
 
+        }
+
+
+    }
+
+    @Override
+    public void create(Payment payment) {
+        try {
+            Connection con = getConnection();
+            double charge = payment.getMerchant().getCharge();
+            payment.setCharge(charge);
+
+
+            String sql = "INSERT INTO payment(dt, merchantid, customerid, goods, total, charge) VALUES(?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setDate(1, new Date(payment.getDt()));
+            statement.setInt(2, payment.getMerchant().getId());
+            statement.setInt(3, payment.getCustomer().getId());
+            statement.setString(4, payment.getGoods());
+            statement.setDouble(5, payment.getTotal());
+            statement.setDouble(6, payment.getCharge());
+
+            boolean rs = statement.execute();
+
+            new MerchantDAO().updateTotal(payment.getMerchant(), payment.getTotal());
+
+            con.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
         }
 
 

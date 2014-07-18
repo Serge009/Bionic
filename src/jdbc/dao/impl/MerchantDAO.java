@@ -52,5 +52,26 @@ public class MerchantDAO extends AbstractMerchantDAO {
 
     }
 
+    public void updateTotal(Merchant merchant, double total){
+        MerchantList res = new MerchantList();
+
+        try {
+            Connection con = getConnection();
+
+            String sql = "UPDATE MERCHANT SET total = total + ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setDouble(1, total);
+            int rs = statement.executeUpdate();
+
+
+
+            con.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
 }

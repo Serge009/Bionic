@@ -27,5 +27,5 @@ public abstract class AbstractPaymentDAO {
         return conn;
     }
 
-    public abstract void save(Payment payment);
+    public abstract void create(Payment payment);
 }

@@ -1,6 +1,10 @@
 package jdbc;
 
 import jdbc.dao.impl.MerchantDAO;
+import jdbc.dao.impl.PaymentDAO;
+import jdbc.entity.Customer;
+import jdbc.entity.Merchant;
+import jdbc.entity.Payment;
 
 import java.io.*;
 import java.sql.*;
@@ -11,7 +15,23 @@ import java.util.Properties;
  */
 public class JDBCBasics {
     public static void main(String[] args) {
-        System.out.println(new MerchantDAO().getAll());
+        //System.out.println(new MerchantDAO().getAll());
+
+        Payment payment = new Payment();
+        Merchant merchant = new Merchant();
+        Customer customer = new Customer();
+        customer.setId(1);
+
+        merchant.setId(1);
+
+        payment.setMerchant(merchant);
+        payment.setCustomer(customer);
+        payment.setDt(1000000000);
+        payment.setGoods("Some goods");
+        payment.setTotal(200);
+        payment.setCharge(20);
+
+        new PaymentDAO().create(payment);
     }
 
 
