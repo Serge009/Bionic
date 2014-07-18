@@ -14,7 +14,41 @@ import java.util.Properties;
  * Created by oper4 on 16.07.2014.
  */
 public class JDBCBasics {
+
+    static {
+        try {
+            //Class.forName("com.mysql.jdbc.Driver");
+            if(false)
+                throw new ClassNotFoundException();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+
+
+        Connection conn = conn = getConnection();
+
+        String sql = "SELECT c.name AS merchant, SUM(p.charge) AS income " +
+                "FROM payment AS p " +
+                "INNER JOIN merchant AS c " +
+                "ON p.customerId = c.id " +
+                "GROUP BY p.customerId " +
+                "ORDER BY income";
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+
+
+        while (rs.next()){
+            System.out.println(rs.getString("merchant") + " " + rs.getDouble("income"));
+        }
+
+        conn.close();
+
+
+
         //System.out.println(new MerchantDAO().getAll());
     /*
         Payment payment = new Payment();
@@ -33,28 +67,6 @@ public class JDBCBasics {
 
         new PaymentDAO().create(payment);
         */
-
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = conn =
-                DriverManager.getConnection("jdbc:mysql://localhost/cm?" +
-                        "user=root&password=admin");
-
-        String sql = "SELECT c.name AS merchant, SUM(p.charge) AS income " +
-                "FROM cm.payment AS p " +
-                "INNER JOIN cm.merchant AS c " +
-                "ON p.customerId = c.id " +
-                "GROUP BY p.customerId " +
-                "ORDER BY income";
-
-        PreparedStatement statement = conn.prepareStatement(sql);
-        ResultSet rs = statement.executeQuery();
-
-
-        while (rs.next()){
-            System.out.println(rs.getString("merchant") + " " + rs.getDouble("income"));
-        }
-
-        conn.close();
     }
 
 
