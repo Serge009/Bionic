@@ -7,10 +7,10 @@ import java.util.List;
  */
 public class FibonacciRunnable implements Runnable {
 
-    private List<Integer> list;
+    private Fibonacci fibonacci;
 
-    public FibonacciRunnable(List<Integer> list) {
-        this.list = list;
+    public FibonacciRunnable(Fibonacci fibonacci) {
+        this.fibonacci = fibonacci;
     }
 
     @Override
@@ -19,10 +19,10 @@ public class FibonacciRunnable implements Runnable {
     }
 
     private void fib(int len){
-        list.add(0);
-        list.add(1);
+        fibonacci.add(0);
+        fibonacci.add(1);
         for(int i = 1; i <= len; i++){
-            list.add(list.get(i) + list.get(i-1));
+            fibonacci.add(fibonacci.get(i) + fibonacci.get(i-1));
         }
     }
 }

@@ -68,6 +68,19 @@ public class DepoList {
 
 	}
 
+    public double getSum(int index){
+        return list.get(index).getSum();
+    }
+
+
+    public void setSum(int index, double sum){
+        list.get(index).setSum(sum);
+    }
+
+
+    public int size(){
+        return list.size();
+    }
 
     public ArrayList<DepoBase> getList() {
         return list;
