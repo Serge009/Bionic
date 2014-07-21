@@ -3,7 +3,7 @@ package concurrency;
 /**
  * Created by oper4 on 18.07.2014.
  */
-public class TestThread extends Thread {
+public class TestThread implements Runnable {
 
     private Thread thread;
 

@@ -82,11 +82,19 @@ public class DepoList {
         return list.size();
     }
 
+    public synchronized void add100(int index) {
+        double tmp = list.get(index).getSum();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        list.get(index).setSum(tmp+100);
+
+    }
+
     public ArrayList<DepoBase> getList() {
         return list;
     }
-	
-	
-	
 
 }

@@ -15,14 +15,22 @@ public class DepoRunnable implements Runnable {
     @Override
     public void run() {
         double sum;
-        for(int i = 0; i < list.size(); i++){
-            sum = list.getSum(i);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        for (int i = 0; i < list.size(); i++) {
+            synchronized (list) {
+                sum = list.getSum(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                list.setSum(i, sum + 100);
             }
-            list.setSum(i, sum + 100);
+        }
+    }
+
+    private void add100() {
+        for (int i = 0; i < list.size(); i++) {
+            list.add100(i);
         }
     }
 }
