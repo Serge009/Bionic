@@ -1,9 +1,11 @@
 package test3.deposit;
 
+import com.sun.istack.internal.NotNull;
+
 import java.time.LocalDate;
 
 /**
- * Created by oper4 on 25.07.2014.
+ * base class for deposits
  */
 abstract public class AbstractDeposit implements Comparable<AbstractDeposit> {
     protected int id;
